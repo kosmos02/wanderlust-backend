@@ -18,7 +18,10 @@ class PostsController < ApplicationController
             @post.save
             render json: @post
         else
-            render json: @post.errors.full_messages.first, status: :unprocessable_entity
+            render(
+                json: {errors: @post.errors.full_messages, 
+                status: :unprocessable_entity
+        })
         end
     end
 
